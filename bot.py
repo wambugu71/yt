@@ -6,7 +6,7 @@ import json, youtube_dl
 #Config vars
 #token = os.environ['TELEGRAM_TOKEN']
 
-with open('app.json') as f:
+with open('config.json') as f:
   token = json.load(f)
   
 #Intitialize YouTube downloader
