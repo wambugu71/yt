@@ -11,7 +11,8 @@ import json, youtube_dl
 # token = json.load(f)
 TOKEN = "5686577136:AAF8NGC6p-Jqw17XWCL4Z-7DW9WafzsVHzY"
 #Intitialize YouTube downloader
-ydl = youtube_dl.YoutubeDL({'outtmpl': '%(id)s%(ext)s'})
+ydl_opts = {}
+ydl = yt_dlp.YoutubeDL(ydl_opts)
 
 #initialise  bot
 #bot = telebot.TeleBot(token)
