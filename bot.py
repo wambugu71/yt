@@ -24,7 +24,7 @@ print(x)
 # works when /start is given
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-  bot.send_message(message.chat.id, "Welcome user this is a YouTube downloader made by @wambugu_kinyua.\n Usage type '/youtube <link>'")
+  bot.send_message(message.chat.id, "Welcome user this is a YouTube downloader made by @wambugu_kinyua.\n Usage type:\t1. '/youtube <link>'\n\t2. '/facebook <video/reel link>")
 
 # works when /motivate is given
 @bot.message_handler(commands=['motivate'])
@@ -62,7 +62,7 @@ def down(msg):
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-  bot.send_message(message.chat.id, "use command /start to welcome menu. Use /youtube <link> to download the video, choose your best quality to download.Enjoy your favorite videos.")
+  bot.send_message(message.chat.id, "use command /start to welcome menu. Use /youtube <link> or /facebook <video or reel link> to download the video, choose your best quality to download.Enjoy your favorite videos.")
 @bot.message_handler(commands=["facebook"])
 def facebook(message):
     args = message.text.split()[1]
