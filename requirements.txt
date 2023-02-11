@@ -1,4 +1,5 @@
 pyTelegramBotAPI
 requests
 youtube-dl
+yt_dlp
 
