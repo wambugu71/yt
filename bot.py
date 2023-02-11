@@ -23,7 +23,7 @@ print(x)
 # works when /start is given
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-  bot.send_message(message.chat.id, "Welcome user this is a YouTube downloader made by @wambugu_kinyua")
+  bot.send_message(message.chat.id, "Welcome user this is a YouTube downloader made by @wambugu_kinyua.\n Usage type '/youtube <link>'")
 
 # works when /motivate is given
 @bot.message_handler(commands=['motivate'])
