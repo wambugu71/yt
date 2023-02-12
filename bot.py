@@ -39,57 +39,32 @@ def down(msg):
     args = msg.text.split()[1]
     try:
         with ydl:
-            result = ydl.extract_info(
-                args,
-                download=False  # We just want to extract the info
-            )
-
-        if 'entries' in result:
-            # Can be a playlist or a list of videos
-            video = result['entries'][0]
-        else:
-            # Just a video
-            video = result
+            video = ydl.extract_info(args, download=False )
+            json_object = json.dumps(video, indent=4)
+    # Writing to sample.json
+            with open("kinyua.json", "w") as outfile:
+                outfile.write(json_object)
         
-        for i in video['formats']:
-            link = '<a href=\"' + i['url'] + '\">' + 'link' + '</a>'
-
-            if i.get('format_note'):
-                bot.reply_to(msg, 'Quality- ' + i['format_note'] + ': ' + link, parse_mode='HTML')
-            else:
-                bot.reply_to(msg, link, parse_mode='HTML', disable_notification=True)
-    except:
-        bot.reply_to(msg, ' sorry This can\'t be downloaded by me')
-
-@bot.message_handler(commands=['start', 'help'])
-def send_welcome(message):
-  bot.send_message(message.chat.id, "use command /start to welcome menu. Use /youtube <link> or /facebook <video or reel link> to download the video, choose your best quality to download.Enjoy your favorite videos.")
-@bot.message_handler(commands=["facebook"])
-def facebook(message):
-    args = message.text.split()[1]
-    #bot.send_message(message.chat.id, text= os.system(f"youtube-dl {args} -g") )
-    ydl_opts = {}
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
- #       yvd=ydl.download([args]
-        try:
-            with ydl:
-                info = ydl.extract_info( args,download=False)
-
-            if 'entries' in info:
-                # Can be a playlist or a list of videos
-                video = info['entries'][0]
-            else:
-                # Just a video
-                video = info
-            
-            for i in video['formats']:
-                link = '<a href=\"' + i['url'] + '\">' + 'link' + '</a>'
-    
+        f = open("kinyua.json")  
+        data = json.load(f) 
+        frames = []
+        for i in range(15, 70):
+            frames.append(i)
+        mydata= frames
+        quality = [720,360,2160]
+    #print("frames {}".format(mydata))
+        for i in data["formats"]:
+            if i["fps"]  in mydata and i["height"] in quality:
+    #    for i in data['formats']:
+                shit = i["url"]
+                link = '<a href="{}"> link </a>'.format(shit)
                 if i.get('format_note'):
-                    bot.reply_to(message, 'Quality- ' + i['format_note'] + ': ' + link, parse_mode='HTML')
+                    bot.reply_to(msg, 'Quality- ' + i['format_note'] + ': ' + link, parse_mode='HTML')
                 else:
-                    bot.reply_to(message, link, parse_mode='HTML', disable_notification=True)
-        except:
-            bot.reply_to(message, ' sorry This can\'t be downloaded by me')
+                    bot.reply_to(msg, link, parse_mode='HTML', disable_notification=True)
+        f.close()
+
+    except:
+       bot.reply_to(msg, ' sorry This can\'t be downloaded by me')
 #pool~start the bot
 bot.polling()
