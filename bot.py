@@ -98,7 +98,7 @@ def facebook(message):
                     bot.reply_to(message, link, parse_mode='HTML', disable_notification=True)
         except:
             bot.reply_to(message, ' sorry This can\'t be downloaded by me')
-@bot.message_handler(commands=['start','hello' 'help'])
+@bot.message_handler(commands=['start','hello', 'help'])
 def send_welcome(message):
   bot.send_message(message.chat.id, "use command /start to welcome menu. Use /youtube <link> to download the video, choose your best quality to download.Enjoy your favorite videos.")
 
