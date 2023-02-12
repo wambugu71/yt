@@ -56,7 +56,7 @@ def down(msg):
         for i in range(15, 70):
             frames.append(i)
         mydata= frames
-        quality = [720,360,2160]
+        quality = [720]
     #print("frames {}".format(mydata))
         for i in data["formats"]:
             if i["fps"]  in mydata and i["height"] in quality:
