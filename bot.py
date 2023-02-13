@@ -88,7 +88,7 @@ def yt(message):
     try:
         z = ken.streams.filter(file_extension='mp4').get_by_itag(22).url
         link = '<a href=\"' + z + '\">' + 'link' + '</a>'
-        bot.reply_to(message, 'Congrats!🎊\nVideo found.🥳🥳\n'  + ': ' + link+ "Credits: @wambugu_kinyua", parse_mode='HTML')
+        bot.reply_to(message, 'Congrats!🎊\nVideo found.🥳🥳\n'  + ': ' + link+ "\nCredits: @wambugu_kinyua", parse_mode='HTML')
     except:
         bot.send_message(message.chat.id, "Unable to download the video🥲🥲🙂")
         
