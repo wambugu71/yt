@@ -3,6 +3,7 @@ import telebot
 import requests
 import yt_dlp
 import time
+from pytube import YouTube
 import os
 from PyDictionary import *
 import json, youtube_dl
@@ -39,39 +40,6 @@ def send_quotes(message):
         quote = requests.request(url='https://api.quotable.io/random',method='get')
         bot.send_message(message.chat.id, quote.json()['content'])
 
-# works when /ytdl <link> is given
-@bot.message_handler(commands=['youtube', 'Youtube', 'YouTube'])
-def down(msg):
-    args = msg.text.split()[1]
-    try:
-        with ydl:
-            video = ydl.extract_info(args, download=False )
-            json_object = json.dumps(video, indent=4)
-    # Writing to sample.json
-            with open("kinyua.json", "w") as outfile:
-                outfile.write(json_object)
-        
-        f = open("kinyua.json")  
-        data = json.load(f) 
-        frames = []
-        for i in range(15, 70):
-            frames.append(i)
-        mydata= frames
-        quality = [720]
-    #print("frames {}".format(mydata))
-        for i in data["formats"]:
-            if i["fps"]  in mydata and i["height"] in quality:
-    #    for i in data['formats']:
-                shit = i["url"]
-                link = '<a href="{}"> link </a>'.format(shit)
-                if i.get('format_note'):
-                    bot.reply_to(msg, 'Quality- ' + i['format_note'] + ': ' + link, parse_mode='HTML')
-                else:
-                    bot.reply_to(msg, link, parse_mode='HTML', disable_notification=True)
-        f.close()
-
-    except:
-       bot.reply_to(msg, ' sorry This can\'t be downloaded by me')
 @bot.message_handler(commands=["facebook","Facebook", "Twitter", "twitter"])
 def facebook(message):
     args = message.text.split()[1]
@@ -112,5 +80,17 @@ def find_meaning(message):
     except:
         bot.send_message(message.chat.id,"As a backend model, Am Unable to search for the word, my training data has no that word.")
 
+@bot.message_handler(commands=["YouTube", "youtube", "download", "Youtube","video"])
+def yt(message):
+    args= message.text.split()[1]
+#    from pytube import YouTube
+    ken = YouTube(args)
+    try:
+        z = ken.streams.filter(file_extension='mp4').get_by_itag(22).url
+        link = '<a href=\"' + z + '\">' + 'link' + '</a>'
+        bot.reply_to(message, 'Congrats!🎊\nVideo found.🥳🥳\n'  + ': ' + link+ "Credits: @wambugu_kinyua", parse_mode='HTML')
+    except:
+        bot.send_message(message.chat.id, "Unable to download the video🥲🥲🙂")
+        
 #pool~start the bot
 bot.polling()
