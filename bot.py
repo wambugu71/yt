@@ -32,7 +32,7 @@ print(x)
 # works when /start is given
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-  bot.send_message(message.chat.id, "Welcome user😊,\nthis is a YouTube, Twitter, Facebook video downloader,\nalso a dictionary for word meaning.\n Usage:\n 1. /youtube "link"\n 2. /Facebook "link"\n3. /Twitter "link"\n4. /meaning "word"\n5. /motivate for motivational quote.\nDownload videos and reels, for free.\nUse /help \nCredits: @wambugu_kinyua\n")
+  bot.send_message(message.chat.id, "Welcome user😊,\nthis is a YouTube, Twitter, Facebook video downloader,\nalso a dictionary for word meaning.\n Usage:\n 1. /youtube 'link'\n 2. /Facebook 'link'\n3. /Twitter 'link'\n4. /meaning 'word'\n5. /motivate for motivational quote.\nDownload videos and reels, for free.\nUse /help \nCredits: @wambugu_kinyua\n")
 
 # works when /motivate is given
 @bot.message_handler(commands=['motivate'])
@@ -69,7 +69,7 @@ def facebook(message):
             bot.reply_to(message, ' sorry This can\'t be downloaded by me')
 @bot.message_handler(commands=['start','hello', 'help'])
 def send_welcome(message):
-  bot.send_message(message.chat.id, "/start to welcome menu.Usage:\n 1. /youtube "link"\n 2. /Facebook "link"\n3. /Twitter "link"\n4. /meaning "word"\n5. /motivate for motivational quote. Enjoy your favorite videos.\n Incase the bot is down DM @wambugu_kinyua\nCredits: @wambugu_kinyua.")
+  bot.send_message(message.chat.id, "/start to welcome menu.Usage:\n 1. /youtube 'link'\n 2. /Facebook 'link'\n3. /Twitter 'link'\n4. /meaning 'word'\n5. /motivate for motivational quote. Enjoy your favorite videos.\n Incase the bot is down DM @wambugu_kinyua\nCredits: @wambugu_kinyua.")
 @bot.message_handler(commands=["meaning"])
 def find_meaning(message):
     args= message.text.split()[1]
