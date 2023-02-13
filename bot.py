@@ -72,7 +72,7 @@ def down(msg):
 
     except:
        bot.reply_to(msg, ' sorry This can\'t be downloaded by me')
-@bot.message_handler(commands=["facebook","Facebook"])
+@bot.message_handler(commands=["facebook","Facebook", "Twitter", "twitter"])
 def facebook(message):
     args = message.text.split()[1]
     #bot.send_message(message.chat.id, text= os.system(f"youtube-dl {args} -g") )
