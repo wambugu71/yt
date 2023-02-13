@@ -1,5 +1,6 @@
 pyTelegramBotAPI
 requests
+pytube
 youtube-dl
 yt_dlp
 PyDictionary
