@@ -4,6 +4,7 @@ import requests
 import yt_dlp
 import time
 import os
+from PyDictionary import *
 import json, youtube_dl
 #TELEGRAM_TOKEN= 5686577136:AAF8NGC6p-Jqw17XWCL4Z-7DW9WafzsVHzY
 #Config vars
@@ -101,6 +102,15 @@ def facebook(message):
 @bot.message_handler(commands=['start','hello', 'help'])
 def send_welcome(message):
   bot.send_message(message.chat.id, "use command /start to welcome menu. Use /youtube <link> to download the video, choose your best quality to download.Enjoy your favorite videos.")
+@bot.message_handler(commands=["meaning"])
+def find_meaning(message):
+    args= message.text.split()[1]
+    dc = PyDictionary()
+    try:
+        my_meaning = dc.meaning(args)
+        bot.send_message(message.chat.id, text=my_meaning["Noun"])
+    except:
+        bot.send_message(message.chat.id,"As a backend model, Am Unable to search for the word, my training data has no that word.")
 
 #pool~start the bot
 bot.polling()
