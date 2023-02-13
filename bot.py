@@ -73,8 +73,9 @@ try:
       bot.send_message(message.chat.id, "/start to welcome menu.Usage:\n 1. /youtube 'link'\n 2. /Facebook 'link'\n3. /Twitter 'link'\n4. /meaning 'word'\n5. /motivate for motivational quote. Enjoy your favorite videos.\n Incase the bot is down DM @wambugu_kinyua\nCredits: @wambugu_kinyua.")
     @bot.message_handler(commands=["meaning"])
     def find_meaning(message):
-        args= message.text.split()[1]
+        
         try:
+            args= message.text.split()[1]
             dc = PyDictionary()
             my_meaning = dc.meaning(args)
             bot.send_message(message.chat.id, text=my_meaning["Noun"])
