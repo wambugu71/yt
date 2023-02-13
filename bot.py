@@ -74,8 +74,8 @@ try:
     @bot.message_handler(commands=["meaning"])
     def find_meaning(message):
         args= message.text.split()[1]
-        dc = PyDictionary()
         try:
+            dc = PyDictionary()
             my_meaning = dc.meaning(args)
             bot.send_message(message.chat.id, text=my_meaning["Noun"])
         except:
