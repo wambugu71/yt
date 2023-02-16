@@ -2,6 +2,6 @@
 Download your favorite YouTube videos in your smartphone.
 YouTube
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wambugu71/youtube-downloader-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wambugu71/yt)
 
 ## Disclaimer
