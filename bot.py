@@ -8,11 +8,8 @@ import os
 from PyDictionary import *
 import json, youtube_dl
 try:
-    #TELEGRAM_TOKEN= 5686577136:AAF8NGC6p-Jqw17XWCL4Z-7DW9WafzsVHzY
-    #Config vars
-    #token = os.environ['TELEGRAM_TOKEN']
-    #token = os.environ['5686577136:AAF8NGC6p-Jqw17XWCL4Z-7DW9WafzsVHzY']
-    TOKEN= "5686577136:AAF8NGC6p-Jqw17XWCL4Z-7DW9WafzsVHzY"
+ 
+    TOKEN= "<token>"
     #	with open('config.json') as f:
     # token = json.load(f)
       
